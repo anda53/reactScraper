@@ -1,0 +1,29 @@
+{
+  "name": "reactscraper",
+  "version": "1.0.0",
+  "description": "new york times scrape save and delete with react",
+  "main": "app/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anda53/reactScraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anda53/reactScraper/issues"
+  },
+  "homepage": "https://github.com/anda53/reactScraper#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.0",
+    "morgan": "^1.7.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "request": "^2.74.0"
+  }
+}
