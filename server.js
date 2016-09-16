@@ -10,7 +10,7 @@ var request = require('request');
 
 
 
-
+var PORT = process.env.PORT || 3000;
 
 // use morgan and bodyparser with our app
 app.use(logger('dev'));
@@ -45,22 +45,24 @@ db.once('open', function() {
 
 // Simple index route
 app.get('/', function(req, res) {
-  res.send('./public/index.html');
+  res.sendFile('./public/index.html');
 });
 
 app.get('/api/saved', function(req, res){
 
-	Article.find({}, function(err, doc){
-		if(err){
-			throw err;
-		}else{
-			res.json(doc);
-		}
-	});
-});
+	Article.find({})
+		.exec(function(err,doc){
+			if(err){
+				console.log(err);
+			}else{
+				res.send(doc);
+			}
+
+		});
 
 app.post('/api/saved', function(req.res){
 	var newArticle= new Article(req.body);
+
 
 	var title = req.body.title;
 	var date = req.body.date;
@@ -75,11 +77,12 @@ app.post('/api/saved', function(req.res){
 
 		}
 
-
 	})
-
 
 })
 
-
+// Listener
+app.listen(PORT, function() {
+  console.log("App listening on PORT: " + PORT);
+});
 
