@@ -45,5 +45,41 @@ db.once('open', function() {
 
 // Simple index route
 app.get('/', function(req, res) {
-  res.send(index.html);
+  res.send('./public/index.html');
 });
+
+app.get('/api/saved', function(req, res){
+
+	Article.find({}, function(err, doc){
+		if(err){
+			throw err;
+		}else{
+			res.json(doc);
+		}
+	});
+});
+
+app.post('/api/saved', function(req.res){
+	var newArticle= new Article(req.body);
+
+	var title = req.body.title;
+	var date = req.body.date;
+	var link = req.body.link;
+
+	newArticle.save(function(err.doc){
+		if(err){
+
+			console.log(err);
+		}else{
+			res.send(doc._id);
+
+		}
+
+
+	})
+
+
+})
+
+
+
